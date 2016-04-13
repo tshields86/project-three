@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 
 /* go connect to db first then setup all routes */
-db.connect('mongodb://localhost:27017/possible_name', (err) => {
+db.connect('mongodb://localhost:27017/mapado', (err) => {
   if (err) {
     console.log('Unable to connect to Mongo.')
     process.exit(1)
@@ -26,7 +26,7 @@ db.connect('mongodb://localhost:27017/possible_name', (err) => {
     //root route
     app.get('/', (req, res) => {
       res.json({
-        'project three':'api',
+        'mapado':'api',
         'version':'1.0'
       });
     });
@@ -36,5 +36,10 @@ db.connect('mongodb://localhost:27017/possible_name', (err) => {
     console.log(`Started on port ${app.server.address().port}`); // template string
   }
 })
+
+/*
+
+
+*/
 
 export default app;
