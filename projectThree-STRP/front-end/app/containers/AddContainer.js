@@ -72,7 +72,7 @@ const AddContainer = React.createClass({
 
     ajaxHelpers.addTask(task)
     .then(function(response){
-      console.log(response);
+      console.log('fuck', response);
     })
 
   },

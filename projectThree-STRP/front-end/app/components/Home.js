@@ -10,6 +10,9 @@ const Home = React.createClass({
         <Link to='addTask'>
           <button type="button" id='add-task'>Add a Task</button>
         </Link>
+        <Link to='listTasks'>
+          <button type="button" id='list-task'>List Tasks</button>
+        </Link>
       </div>
     );
   }
