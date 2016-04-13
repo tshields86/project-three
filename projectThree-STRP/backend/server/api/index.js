@@ -10,7 +10,7 @@ export default function() {
   api.get('/tasks', (req, res) => {
     console.log('hitting tasks');
     collection.find().toArray((err, docs) => {
-      res.json({ tasks : 'docs' });
+      res.json({ tasks : docs });
     });
   });
 
