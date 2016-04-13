@@ -11,27 +11,23 @@ function AddTask(props) {
         <form>
           <div>
             <p><b>My Tasks: </b><br/><input type='text' name='mytask'/></p>
-            Today's Date: <input type='date' name='date' className='date' />
-            <br/>
-            <br/>
+            Date: <input type='date' name='date' className='date' />
+            <br/><br/>
             Location: <input type='text' name='' className='location'/>
-            <br/>
-            <br/>
+            <br/><br/>
             Task Category:
             <br/>
             <select name="taskCategory">
               <option value="personal">Personal</option>
               <option value="school">School</option>
               <option value="work">Work</option>
-              <option value="others">Others</option>
+              <option value="other">Other</option>
             </select>
-            <br/>
-            <br/>
+            <br/><br/>
             Time:
             <br/>
             <input type='time' />
-            <br/>
-            <br/>
+            <br/><br/>
             Detail:
             <br/>
             <textarea name='task-description'
