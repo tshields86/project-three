@@ -23,6 +23,9 @@ db.connect('mongodb://localhost:27017/mapado', (err) => {
     console.log('connected to mongo');
     /* now start the server and setup all routes! */
 
+    app.push('/')
+
+
     //root route
     app.get('/', (req, res) => {
       res.json({
@@ -30,6 +33,7 @@ db.connect('mongodb://localhost:27017/mapado', (err) => {
         'version':'1.0'
       });
     });
+
     // api route
     app.use('/api', api());
     app.server.listen(process.env.PORT || 3000); // use the system port or local
