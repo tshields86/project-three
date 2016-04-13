@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, hashHistory} from 'react-router';
 import Main from '../components/Main';
 import Home from '../components/Home';
 import AddContainer from '../containers/AddContainer';
+import ListTaskContainer from '../containers/ListTaskContainer';
 
 
 //jsx router. tell our data cop where to send our data
@@ -12,6 +13,7 @@ const routes = (
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
       <Route path='addTask' component={AddContainer}/>
+      <Route path='listTasks' component={ListTaskContainer}/>
     </Route>
   </Router>
 );
