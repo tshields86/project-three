@@ -23,7 +23,7 @@ db.connect('mongodb://localhost:27017/mapado', (err) => {
     console.log('connected to mongo');
     /* now start the server and setup all routes! */
 
-    app.push('/')
+    // app.push('/')
 
 
     //root route
