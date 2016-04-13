@@ -1,10 +1,13 @@
 import React from 'react';
+const AddStyle = {
+  border: '1px solid navy'
+}
 
 function AddTask(props) {
   return (
     <div>
       <h2>Add Task</h2>
-      <div>
+      <div style={AddStyle}>
         <form>
           <div>
             <p><b>My Tasks: </b><br/><input type='text' name='mytask'/></p>
