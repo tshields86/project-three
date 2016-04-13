@@ -24,3 +24,5 @@ export default function() {
 
   return api;
 }
+
+console.log('foo');
