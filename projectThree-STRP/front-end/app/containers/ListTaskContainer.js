@@ -21,26 +21,27 @@ const ListTaskContainer = React.createClass({
     }.bind(this));
   },
 
-render: function() {
-
-  const Tasks = this.state.tasks.map(task, index) => {
-    return (
-      <div key={task._id} className="task-card">
-        <p>Task: {task.taskName}</p>
-        <p>Date: {task.date}</p>
-        <p>Time: {task.time}</p>
-        <p>Location: {task.location}</p>
-        <p>Category: {task.category}</p>
-        <p>Detail: {task.detail}</p>
+  render: function() {
+  console.log("this is the response from the backend", this.state.tasks);
+  const tasksListElement = [];
+    for (let task in this.state.tasks) {
+      console.log("task of tasks", this.state.tasks[task])
+      tasksListElement.push(
+      <div key={this.state.tasks[task]._id} className="task-card">
+        <p>Task: {this.state.tasks[task].taskName}</p>
+        <p>Date: {this.state.tasks[task].date}</p>
+        <p>Time: {this.state.tasks[task].time}</p>
+        <p>Location: {this.state.tasks[task].location}</p>
+        <p>Category: {this.state.tasks[task].category}</p>
+        <p>Detail: {this.state.tasks[task].detail}</p>
       </div>
-    )
+    );
   }
-}
 return (
   <ListTask
-    tasks = {Tasks}
+    tasks={tasksListElement}
     />
-)
+  )
   }
 });
 
