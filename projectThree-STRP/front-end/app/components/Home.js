@@ -7,11 +7,8 @@ const Home = React.createClass({
     return (
       <div>
         <h1>Hello World from STRPers</h1>
-        <Link to='addTask'>
-          <button type="button" id='add-task'>Add a Task</button>
-        </Link>
         <Link to='listTasks'>
-          <button type="button" id='list-task'>List Tasks</button>
+          <button type="button" id='list-task'>Tasks</button>
         </Link>
       </div>
     );

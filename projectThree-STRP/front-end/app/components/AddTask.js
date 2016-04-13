@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router';
+
 const AddStyle = {
   border: '1px solid navy'
 }
@@ -6,6 +8,8 @@ const AddStyle = {
 function AddTask(props) {
   return (
     <div>
+      <h1>Hello World from STRPers</h1>
+      <br/>
       <h2>Add Task</h2>
       <div style={AddStyle}>
         <form onSubmit={props.onSubmitTask}>
@@ -41,7 +45,9 @@ function AddTask(props) {
           </div>
           <br/>
           <div>
-            <button className='task-add-btn' type='submit'>Add Task(+)</button>
+            <Link to='listTasks'>
+              <button className='task-add-btn' type='submit'>Add Task(+)</button>
+            </Link>
           </div>
         </form>
       </div>
