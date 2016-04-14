@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import AddTask from '../components/AddTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
+import {Link} from 'react-router';
 const AddContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -61,6 +62,10 @@ const AddContainer = React.createClass({
     }.bind(this));
   },
 
+  handleOnEdit: function(){
+    <Link to='editTask'></Link>
+  },
+
   handleOnDelete: function() {
     ajaxHelpers.deleteTask()
     .then(function(response){
@@ -114,7 +119,7 @@ const AddContainer = React.createClass({
             <p>Location: {this.state.tasks[task].location}</p>
             <p>Category: {this.state.tasks[task].category}</p>
             <p>Detail: {this.state.tasks[task].detail}</p>
-            <button value={this.state.tasks[task]._id} type="button">Edit</button>
+            <button value={this.state.tasks[task]._id} type="button" onClick={this.handleOnEdit}>Edit</button>
             <button value={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
           </div>
       );
