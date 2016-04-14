@@ -37,8 +37,8 @@ const ListTaskContainer = React.createClass({
           <p>Location: {this.state.tasks[task].location}</p>
           <p>Category: {this.state.tasks[task].category}</p>
           <p>Detail: {this.state.tasks[task].detail}</p>
-          <button type="button">Edit</button>
-          <button type="button">Delete</button>
+          <button value={this.state.tasks[task]._id} type="button">Edit</button>
+          <button value={this.state.tasks[task]._id} type="button">Delete</button>
         </div>
     );
   }
