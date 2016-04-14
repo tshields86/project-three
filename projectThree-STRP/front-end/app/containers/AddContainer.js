@@ -85,8 +85,7 @@ const AddContainer = React.createClass({
     .then(function(response){
       console.log('Response:', response);
     })
-    console.log("this is the weird this in the onSubmitTask", this);
-    this.componentDidMount();
+
   },
   render: function () {
     const tasksListElement = [];
