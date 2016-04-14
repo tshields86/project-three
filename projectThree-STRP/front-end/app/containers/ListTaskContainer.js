@@ -1,8 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
-import ListTask from '../components/ListTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import {Link} from 'react-router';
+import ListTask from '../components/ListTask';
+import AddTask from '../components/AddTask';
 
 const ListTaskContainer = React.createClass({
   getInitialState: function() {
@@ -44,9 +45,11 @@ const ListTaskContainer = React.createClass({
   }
   return (
     <div>
-      <ListTask
-      tasks={tasksListElement}
-        />
+      <h2>Show all Tasks</h2>
+      <Link to='addTask'>
+          <button type='button' className='add-btn'>+</button>
+      </Link>
+      <ListTask tasks={tasksListElement}/>
     </div>
     )
   }

@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import AddTask from '../components/AddTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import {Link} from 'react-router';
+import ListTask from '../components/ListTask';
+
 const AddContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -16,11 +18,7 @@ const AddContainer = React.createClass({
       detail: null
     }
   },
-  // handleOn: function (e, param) {
-  //   this.setState({
-  //       param: e.target.value
-  //   })
-  // },
+
   handleOnTaskName: function(e){
     this.setState({
       taskName: e.target.value
@@ -108,27 +106,10 @@ const AddContainer = React.createClass({
 
   },
   render: function () {
-    const tasksListElement = [];
-    const listStyle = {
-      border: "1px solid black"
-    }
-      for (let task in this.state.tasks) {
-        tasksListElement.push(
-          <div key={this.state.tasks[task]._id} style={listStyle} className="task-card">
-            <p>Task: {this.state.tasks[task].taskName}</p>
-            <p>Date: {this.state.tasks[task].date}</p>
-            <p>Time: {this.state.tasks[task].time}</p>
-            <p>Location: {this.state.tasks[task].location}</p>
-            <p>Category: {this.state.tasks[task].category}</p>
-            <p>Detail: {this.state.tasks[task].detail}</p>
-            <button value={this.state.tasks[task]._id} type="button" onClick={this.handleOnEdit}>Edit</button>
-            <button value={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
-          </div>
-      );
-    }
+
     return (
+    <div>
       <AddTask
-        tasks={tasksListElement}
         onAddTaskName={this.handleOnTaskName}
         onAddDate={this.handleOnDate}
         onAddTime={this.handleOnTime}
@@ -137,6 +118,8 @@ const AddContainer = React.createClass({
         onAddDetail={this.handleOnDetail}
         onSubmitTask={this.handleOnSubmitTask}
         />
+      <ListTask/>
+    </div>
     );
   }
 })
