@@ -30,10 +30,9 @@ function AddTask(props) {
               <option value="personal">Personal</option>
               <option value="school">School</option>
               <option value="work">Work</option>
-              <option value="others">Others</option>
+              <option value="other">Other</option>
             </select>
-            <br/>
-            <br/>
+            <br/><br/>
             Time:
             <br/>
             <input type='time' onChange={props.onAddTime}/>

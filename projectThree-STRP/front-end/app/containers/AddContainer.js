@@ -7,12 +7,12 @@ const AddContainer = React.createClass({
   },
   getInitialState: function(){
     return {
-      taskName: '',
+      taskName: null,
       date: null,
       time: null,
-      location: '',
-      category: '',
-      detail: ''
+      location: null,
+      category: null,
+      detail: null
     }
   },
   // handleOn: function (e, param) {
@@ -81,10 +81,15 @@ const AddContainer = React.createClass({
       detail: this.state.detail
     };
 
+    if (task.taskName !== null){
     ajaxHelpers.addTask(task)
     .then(function(response){
       console.log('Response:', response);
     })
+
+    console.log("this is the weird this in the onSubmitTask", this);
+    this.componentDidMount();
+    }
 
   },
   render: function () {
