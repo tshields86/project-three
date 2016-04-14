@@ -54,7 +54,17 @@ const AddContainer = React.createClass({
     ajaxHelpers.getTasks()
     //TODO show my tasks
     .then(function(response){
-      console.log('console.log', response.data.tasks);
+      console.log("componentDidMount",response.data.tasks);
+      this.setState({
+        tasks: response.data.tasks
+      });
+    }.bind(this));
+  },
+
+  handleOnDelete: function() {
+    ajaxHelpers.deleteTask()
+    .then(function(response){
+      console.log("handleOnDelete");
       this.setState({
         tasks: response.data.tasks
       });
@@ -105,7 +115,7 @@ const AddContainer = React.createClass({
             <p>Category: {this.state.tasks[task].category}</p>
             <p>Detail: {this.state.tasks[task].detail}</p>
             <button type="button">Edit</button>
-            <button type="button">Delete</button>
+            <button type="button" onClick={this.handleOnDelete}>Delete</button>
           </div>
       );
     }
