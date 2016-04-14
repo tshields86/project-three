@@ -29,11 +29,7 @@ const ListTaskContainer = React.createClass({
     border: "1px solid black"
   }
     for (let task in this.state.tasks) {
-      console.log("task of tasks", this.state.tasks[task])
       tasksListElement.push(
-
-
-
         <div key={this.state.tasks[task]._id} style={listStyle} className="task-card">
           <p>Task: {this.state.tasks[task].taskName}</p>
           <p>Date: {this.state.tasks[task].date}</p>
@@ -44,16 +40,15 @@ const ListTaskContainer = React.createClass({
           <button type="button">Edit</button>
           <button type="button">Delete</button>
         </div>
-
     );
   }
-return (
-  <div>
-    <ListTask
-    tasks={tasksListElement}
-      />
-  </div>
-  )
+  return (
+    <div>
+      <ListTask
+      tasks={tasksListElement}
+        />
+    </div>
+    )
   }
 });
 
