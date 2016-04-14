@@ -44,11 +44,14 @@ function AddTask(props) {
           </div>
             <br/>
           <div>
-            <Link to='listTasks' type='submit'>
-              <button className='task-add-btn' type='button'>Done</button>
+            <button className='task-add-btn' type='submit'>Add Task</button>
+            <br/>
+            <Link to='listTasks'>
+              <button className='done-add-btn' type='button'>Done</button>
             </Link>
           </div>
         </form>
+        {props.tasks}
       </div>
     </div>
   )

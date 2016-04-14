@@ -101,12 +101,43 @@ const AddContainer = React.createClass({
     })
 
     console.log("this is the weird this in the onSubmitTask", this);
-    this.componentDidMount();
+    this.rerender();
     }
 
   },
-  render: function () {
 
+  rerender: function() {
+    ajaxHelpers.getTasks()
+    //TODO show my tasks
+    .then(function(response){
+      console.log('console.log', response.data.tasks);
+      this.setState({
+        tasks: response.data.tasks
+      });
+    }.bind(this));
+  },
+
+  render: function () {
+    const tasksListElement = [];
+    const listStyle = {
+      border: "1px solid black"
+    }
+      for (let task in this.state.tasks) {
+        tasksListElement.push(
+          <div key={this.state.tasks[task]._id} style={listStyle} className="task-card">
+            <p>Task: {this.state.tasks[task].taskName}</p>
+            <p>Date: {this.state.tasks[task].date}</p>
+            <p>Time: {this.state.tasks[task].time}</p>
+            <p>Location: {this.state.tasks[task].location}</p>
+            <p>Category: {this.state.tasks[task].category}</p>
+            <p>Detail: {this.state.tasks[task].detail}</p>
+            <Link to="editTask">
+              <button value={this.state.tasks[task]._id} type="button">Edit</button>
+            </Link>
+            <button value={this.state.tasks[task]._id} type="button">Delete</button>
+          </div>
+      );
+    }
     return (
     <div>
       <AddTask
@@ -117,8 +148,9 @@ const AddContainer = React.createClass({
         onAddCategory={this.handleOnCategory}
         onAddDetail={this.handleOnDetail}
         onSubmitTask={this.handleOnSubmitTask}
+        tasks={tasksListElement}
         />
-      <ListTask/>
+
     </div>
     );
   }
