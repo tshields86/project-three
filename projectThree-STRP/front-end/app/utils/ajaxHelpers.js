@@ -5,8 +5,8 @@ const helpers = {
     // fetch some data from using a promise
     return axios.get('http://localhost:3000/api/tasks');
   },
-  getTask: function(){
-    return axios.get('http://localhost:3000/api/task')
+  getTask: function(task){
+    return axios.get('http://localhost:3000/api/task', task)
   },
   addTask: function(task){
     return axios.post('http://localhost:3000/api/task', task);

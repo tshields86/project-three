@@ -8,12 +8,7 @@ const AddStyle = {
 function EditTask(props) {
   return (
     <div>
-      <Link to='/'>
-        <button type="button" id='home'>Home</button>
-      </Link>
-      <h1>Hello World from STRPers</h1>
-      <br/>
-      <h2>Add Task</h2>
+      <h2>Edit Task</h2>
       <div style={AddStyle}>
         <form onSubmit={props.onSubmitTask}>
           <div>
@@ -47,10 +42,6 @@ function EditTask(props) {
               <button className='task-update-btn' type='submit'>Update Task(+)</button>
           </div>
         </form>
-      </div>
-      <div>
-        <h2>Show all Tasks</h2>
-        {props.tasks}
       </div>
     </div>
   )

@@ -14,7 +14,9 @@ const routes = (
       <IndexRoute component={Home} />
       <Route path='addTask' component={AddContainer}/>
       <Route path='listTasks' component={ListTaskContainer}/>
-      <Route path='editTask' component={EditTaskContainer}/>
+      <Route path='editTask'>
+          <Route path='/editTask/:id' component={EditTaskContainer}></Route>
+      </Route>
     </Route>
   </Router>
 );
