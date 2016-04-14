@@ -8,6 +8,9 @@ const AddStyle = {
 function AddTask(props) {
   return (
     <div>
+      <Link to='/'>
+        <button type="button" id='home'>Home</button>
+      </Link>
       <h1>Hello World from STRPers</h1>
       <br/>
       <h2>Add Task</h2>
@@ -45,11 +48,13 @@ function AddTask(props) {
           </div>
           <br/>
           <div>
-            <Link to='listTasks'>
               <button className='task-add-btn' type='submit'>Add Task(+)</button>
-            </Link>
           </div>
         </form>
+      </div>
+      <div>
+        <h2>Show all Tasks</h2>
+        {props.tasks}
       </div>
     </div>
   )
