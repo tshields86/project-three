@@ -15,12 +15,13 @@ export default function() {
   });
 
 //gets one task by id
-  api.get('/task', (req, res) => {
-    // create a new task
-    collection.findOne({"_id": ObjectID(req.body._id)}, (err, collection) => {
-      res.json(collection);
-    });
-  });
+api.get('/task/:id', (req, res) => {
+   // create a new task
+   console.log("req body!!!!", req.params.id);
+   collection.findOne({"_id": ObjectID(req.params.id)}, (err, collection) => {
+     res.json(collection);
+   });
+ });
 
   api.post('/task', (req, res) => {
     console.log('api.post /task');
@@ -38,10 +39,10 @@ export default function() {
   //   });
   // });
 
-  api.delete('/task', (req, res) => {
-    console.log('api.post /task');
+  api.delete('/task/:id', (req, res) => {
+    console.log("this is the delete promise req.params.id", req.params.id);
     // create a new task
-    collection.remove({"_id": ObjectID(req.body._id)}, (err, result) => {
+    collection.remove({"_id": ObjectID(req.params.id)}, (err, result) => {
       res.json(result);
     });
   });
