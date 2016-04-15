@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import AddTask from '../components/AddTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
+
 const AddContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -20,7 +21,7 @@ const AddContainer = React.createClass({
   //       param: e.target.value
   //   })
   // },
-  handleOnTaskName: function(e){
+  handleOntaskName: function(e){
     this.setState({
       taskName: e.target.value
     })

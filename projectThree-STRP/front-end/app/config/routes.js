@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, hashHistory} from 'react-router';
 import Main from '../components/Main';
 import Home from '../components/Home';
 import AddContainer from '../containers/AddContainer';
+import DeleteContainer from '../containers/DeleteContainer';
 import ListTaskContainer from '../containers/ListTaskContainer';
 
 
@@ -14,6 +15,7 @@ const routes = (
       <IndexRoute component={Home} />
       <Route path='addTask' component={AddContainer}/>
       <Route path='listTasks' component={ListTaskContainer}/>
+      <Route path= 'deleteTask'component={DeleteContainer}/>
     </Route>
   </Router>
 );

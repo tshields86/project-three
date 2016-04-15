@@ -11,8 +11,8 @@ const helpers = {
   addTask: function(task){
     return axios.post('http://localhost:3000/api/task', task);
   },
-  deleteTask: function(task){
-    return axios.delete('http://localhost:3000/api/task', task);
+  deleteTask: function(taskName){
+    return axios.delete('http://localhost:3000/api/task',taskName);
   },
   updateTask: function(task){
     return axios.put('http://localhost:3000/api/task', task);

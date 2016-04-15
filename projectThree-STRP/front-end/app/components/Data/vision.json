@@ -1,0 +1,89 @@
+[ {
+  "TaskName": "Shopping",
+  "Location": "Macy's",
+  "Category":"Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    :"06:01:14",
+  "Description":"Let's for some shopping"
+},
+{
+  "TaskName": "School",
+  "Location": "Manhattan",
+  "Category":"Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    :"06:01:14",
+  "Description":"Let's do some study"
+}
+{
+"TaskName": "Work",
+"Location": "Manhattan",
+"Category":"Personal,Business",
+"Date"    : "2016-04-13",
+"Time"    :"06:01:14",
+"Description":"Let's do some work "
+}
+{
+  "TaskName": "Picnic",
+  "Location": "Bushikill Falls",
+  "Category":"Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    :"06:01:14",
+  "Description":"Always Remember God"
+}
+{
+  "TaskName": "Doctor",
+  "Location": "Flushing",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Makesure no shot"
+},
+{
+  "TaskName": "Movie",
+  "Location": "Bombay Theatre",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Don't forget some popcorn"
+}
+{
+  "TaskName": "Bank",
+  "Location": "Flushing",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Pay some Bills"
+},
+{
+  "TaskName": "Gym",
+  "Location": "Flushing",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Lets do some work"
+},
+{
+  "TaskName": "Bronx Zoo",
+  "Location": "Bronx",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Have some fun"
+},{
+  "TaskName": "School",
+  "Location": "Flushing",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"Study Hard"
+},
+{
+  "TaskName": "Glorius Food",
+  "Location": "Manhattan",
+  "Category": "Personal,Business",
+  "Date"    : "2016-04-13",
+  "Time"    : "06:01:14",
+  "Description":"American" 
+}
+
+]
