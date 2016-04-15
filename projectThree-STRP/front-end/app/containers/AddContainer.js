@@ -1,6 +1,11 @@
 import React, { PropTypes } from 'react';
 import AddTask from '../components/AddTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
+<<<<<<< HEAD
+=======
+import {Link} from 'react-router';
+import ListTask from '../components/ListTask';
+>>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
 
 const AddContainer = React.createClass({
   contextTypes: {
@@ -16,12 +21,17 @@ const AddContainer = React.createClass({
       detail: null
     }
   },
+<<<<<<< HEAD
   // handleOn: function (e, param) {
   //   this.setState({
   //       param: e.target.value
   //   })
   // },
   handleOntaskName: function(e){
+=======
+
+  handleOnTaskName: function(e){
+>>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
     this.setState({
       taskName: e.target.value
     })
@@ -55,7 +65,21 @@ const AddContainer = React.createClass({
     ajaxHelpers.getTasks()
     //TODO show my tasks
     .then(function(response){
-      console.log('console.log', response.data.tasks);
+      console.log("componentDidMount",response.data.tasks);
+      this.setState({
+        tasks: response.data.tasks
+      });
+    }.bind(this));
+  },
+
+  handleOnEdit: function(){
+    <Link to='editTask'></Link>
+  },
+
+  handleOnDelete: function() {
+    ajaxHelpers.deleteTask()
+    .then(function(response){
+      console.log("handleOnDelete");
       this.setState({
         tasks: response.data.tasks
       });
@@ -87,10 +111,24 @@ const AddContainer = React.createClass({
     .then(function(response){
       console.log('Response:', response);
     })
+
     console.log("this is the weird this in the onSubmitTask", this);
-    this.componentDidMount();
-  }
+    this.rerender();
+    }
+
   },
+
+  rerender: function() {
+    ajaxHelpers.getTasks()
+    //TODO show my tasks
+    .then(function(response){
+      console.log('console.log', response.data.tasks);
+      this.setState({
+        tasks: response.data.tasks
+      });
+    }.bind(this));
+  },
+
   render: function () {
     const tasksListElement = [];
     const listStyle = {
@@ -105,14 +143,12 @@ const AddContainer = React.createClass({
             <p>Location: {this.state.tasks[task].location}</p>
             <p>Category: {this.state.tasks[task].category}</p>
             <p>Detail: {this.state.tasks[task].detail}</p>
-            <button type="button">Edit</button>
-            <button type="button">Delete</button>
           </div>
       );
     }
     return (
+    <div>
       <AddTask
-        tasks={tasksListElement}
         onAddTaskName={this.handleOnTaskName}
         onAddDate={this.handleOnDate}
         onAddTime={this.handleOnTime}
@@ -120,7 +156,10 @@ const AddContainer = React.createClass({
         onAddCategory={this.handleOnCategory}
         onAddDetail={this.handleOnDetail}
         onSubmitTask={this.handleOnSubmitTask}
+        tasks={tasksListElement}
         />
+
+    </div>
     );
   }
 })
