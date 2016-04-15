@@ -12,14 +12,14 @@ function EditTask(props) {
       <div style={AddStyle}>
         <form onSubmit={props.onSubmitTask}>
           <div>
-            <p><b>My Tasks: </b><br/><input type='text' name='mytask'  onChange={props.onEditTaskName}/></p>
-            Date: <input type='date' name='date' className='date'  onChange={props.onEditDate}/>
+            <p><b>My Tasks: </b><br/><input type='text' name='mytask'  onChange={props.onEditTaskName} /></p>
+            Date: <input type='date' name='date' className='date'  onChange={props.onEditDate} />
             <br/><br/>
-            Location: <input type='text' name='' className='location' onChange={props.onEditLocation}/>
+            Location: <input type='text' name='' className='location' onChange={props.onEditLocation} />
             <br/><br/>
             Task Category:
             <br/>
-            <select name="taskCategory" onChange={props.onEditCategory}>
+            <select name="taskCategory" onChange={props.onEditCategory} >
               <option value="personal">Personal</option>
               <option value="school">School</option>
               <option value="work">Work</option>
@@ -28,14 +28,14 @@ function EditTask(props) {
             <br/><br/>
             Time:
             <br/>
-            <input type='time' onChange={props.onEditTime}/>
+            <input type='time' onChange={props.onEditTime} />
             <br/><br/>
             Detail:
             <br/>
             <textarea name='task-description'
                       maxLength='140'
                       placeholder='(Detail description...)'
-                      onChange={props.onEditDetail}/>
+                      onChange={props.onEditDetail} />
           </div>
           <br/>
           <div>

@@ -10,6 +10,8 @@ const EditContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
+
+
   getInitialState: function(){
     return {
       taskName: null,
@@ -17,29 +19,26 @@ const EditContainer = React.createClass({
       time: null,
       location: null,
       category: null,
-      detail: null
+      detail: null,
+      tasks: null
     }
   },
 
-  grabTask: function() {
-    console.log(this.state.params);
-    const contact = {
-      editID: this.state.params,
-    };
-    ajaxHelpers.getTask(editID)
+  componentDidMount: function() {
+    ajaxHelpers.getTask(this.props.params.id)
     .then(function(response){
-      console.log('console.log', response.data.tasks);
+      console.log('response', response);
       this.setState({
-        tasks: response.data.tasks
+        tasks: response
       });
     }.bind(this));
   },
 
   render: function () {
-    console.log("params",this.state.params);
+    console.log("this is edit task comp tasks" , this.state.tasks);
     return (
     <div>
-      <EditTask/>
+      <EditTask tasks={this.state.tasks}/>
     </div>
     );
   }
