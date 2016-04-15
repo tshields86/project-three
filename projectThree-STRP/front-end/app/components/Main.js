@@ -8,28 +8,36 @@ const Main = React.createClass({
     var map = L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);
   },
   render: function(){
+    const StyleAll = {
+      margin: '0',
+      boxSizing: 'border-box',
+      padding: "0"
+    }
     const StyleHeader = {
       position: 'fixed',
-      margin: '1vw',
+      margin: '0auto',
       textAlign: "center"
     }
     const StyleMap = {
-      width: '95vw',
+      width: '100vw',
       height: '65vw',
-      margin: '0vw',
       zIndex: '-3000',
-      position: 'fixed'
+      position: 'fixed',
+      border: "0",
+      padding: "0"
     };
-    const StyleRest = {
+    const StyleData = {
       width: '10vw',
-      zIndex: '3000'
+      zIndex: '3000',
+      float: 'right',
+      marginRight: '2vw'
     }
 
     return(
-      <div>
+      <div style={StyleAll}>
         <h1 style={StyleHeader}>Mapado</h1>
         <div id='map' style={StyleMap}></div>
-        <div style={StyleRest}>{this.props.children}</div>
+        <div style={StyleData}>{this.props.children}</div>
       </div>
     )
   }

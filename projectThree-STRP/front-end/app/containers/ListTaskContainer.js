@@ -9,6 +9,7 @@ const ListTaskContainer = React.createClass({
   getInitialState: function() {
     return {
       isLoading: true,
+      _id: '',
       tasks: []
     }
   },
@@ -23,6 +24,15 @@ const ListTaskContainer = React.createClass({
     }.bind(this));
   },
 
+  handleOnDelete(e){
+    console.log('We want to delete', e.target.id)
+    console.log("we finna logging task.id", e.target.id);
+    ajaxHelpers.deleteTask(e.target.id)
+    .then(function(response){
+      console.log("this is the response from the backend", response)
+    })
+  },
+
   render: function() {
   console.log("this is the response from the backend", this.state.tasks);
   const tasksListElement = [];
@@ -31,7 +41,7 @@ const ListTaskContainer = React.createClass({
   }
     for (let task in this.state.tasks) {
       tasksListElement.push(
-        <div key={this.state.tasks[task]._id} style={listStyle} className="task-card">
+        <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
           <p>Task: {this.state.tasks[task].taskName}</p>
           <p>Date: {this.state.tasks[task].date}</p>
           <p>Time: {this.state.tasks[task].time}</p>
@@ -41,11 +51,11 @@ const ListTaskContainer = React.createClass({
           <Link to={`/editTask/${this.state.tasks[task]._id}`}>
             <button id={this.state.tasks[task]._id} type="button">Edit</button>
           </Link>
-          <button id={this.state.tasks[task]._id} type="button">Delete</button>
+          <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
         </div>
     );
   }
-  
+
   return (
     <div>
       <h2>Show all Tasks</h2>
