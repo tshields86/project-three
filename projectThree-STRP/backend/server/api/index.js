@@ -15,9 +15,11 @@ export default function() {
   });
 
 //gets one task by id
-  api.get('/task', (req, res) => {
+  api.get('/task/:id', (req, res) => {
     // create a new task
-    collection.findOne({"_id": ObjectID(req.body._id)}, (err, collection) => {
+    console.log("req body!!!!", req.params.id);
+    console.log("get being called with param in hand");
+    collection.findOne({"_id": ObjectID(req.params.id)}, (err, collection) => {
       res.json(collection);
     });
   });
