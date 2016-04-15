@@ -11,12 +11,8 @@ const ListTaskContainer = React.createClass({
   getInitialState: function() {
     return {
       isLoading: true,
-<<<<<<< HEAD
-      taskName: []
-=======
       _id: '',
       tasks: []
->>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
     }
   },
   handleDeleteTask: function(e){
@@ -73,15 +69,10 @@ const ListTaskContainer = React.createClass({
           <p>Location: {this.state.tasks[task].location}</p>
           <p>Category: {this.state.tasks[task].category}</p>
           <p>Detail: {this.state.tasks[task].detail}</p>
-<<<<<<< HEAD
-          <button value={this.state.tasks[task]._id} type="button">Edit</button>
-          <button onClick={this.handleDeleteTask} value={this.state.tasks[task]._id}type="button">Delete</button>
-=======
           <Link to={`/editTask/${this.state.tasks[task]._id}`}>
             <button id={this.state.tasks[task]._id} type="button">Edit</button>
           </Link>
           <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
->>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
         </div>
     );
   }

@@ -15,13 +15,9 @@ const routes = (
       <IndexRoute component={Home} />
       <Route path='addTask' component={AddContainer}/>
       <Route path='listTasks' component={ListTaskContainer}/>
-<<<<<<< HEAD
-      <Route path= 'deleteTask'component={DeleteContainer}/>
-=======
       <Route path='editTask'>
           <Route path='/editTask/:id' component={EditTaskContainer}></Route>
       </Route>
->>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
     </Route>
   </Router>
 );

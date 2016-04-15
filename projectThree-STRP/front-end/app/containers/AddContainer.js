@@ -1,11 +1,8 @@
 import React, { PropTypes } from 'react';
 import AddTask from '../components/AddTask';
 import ajaxHelpers from '../utils/ajaxHelpers';
-<<<<<<< HEAD
-=======
 import {Link} from 'react-router';
 import ListTask from '../components/ListTask';
->>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
 
 const AddContainer = React.createClass({
   contextTypes: {
@@ -21,17 +18,8 @@ const AddContainer = React.createClass({
       detail: null
     }
   },
-<<<<<<< HEAD
-  // handleOn: function (e, param) {
-  //   this.setState({
-  //       param: e.target.value
-  //   })
-  // },
-  handleOntaskName: function(e){
-=======
 
   handleOnTaskName: function(e){
->>>>>>> 8d56acb9d6a7f3b28aeb5a6dbcbb482c2eb64905
     this.setState({
       taskName: e.target.value
     })
