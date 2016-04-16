@@ -11,12 +11,16 @@ const Main = React.createClass({
     const StyleAll = {
       margin: '0',
       boxSizing: 'border-box',
-      padding: "0"
+      padding: "0",
+      textAlign: 'center',
+      fontFamily: "Palatino Linotype, Book Antiqua, Palatino, serif",
     }
     const StyleHeader = {
       position: 'fixed',
       margin: '0auto',
-      textAlign: "center"
+      textAlign: "center",
+      fontSize: "50px",
+      margin: "15px 50px 0px 50px"
     }
     const StyleMap = {
       width: '100vw',
@@ -27,7 +31,7 @@ const Main = React.createClass({
       padding: "0"
     };
     const StyleData = {
-      width: '10vw',
+      width: '25vw',
       zIndex: '3000',
       float: 'right',
       marginRight: '2vw'
