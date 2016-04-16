@@ -4,6 +4,7 @@ import ajaxHelpers from '../utils/ajaxHelpers';
 import {Link} from 'react-router';
 import ListTask from '../components/ListTask';
 import AddTask from '../components/AddTask';
+import { parse, stringify } from 'query-string';
 
 const ListTaskContainer = React.createClass({
   contextTypes: {
@@ -28,6 +29,8 @@ const ListTaskContainer = React.createClass({
     }.bind(this));
   },
 
+
+
   handleOnDelete(e){
     console.log('We want to delete', e.target.id)
     console.log("we finna logging task.id", e.target.id);
@@ -45,11 +48,11 @@ const ListTaskContainer = React.createClass({
     console.log("logging in ListTaskContainer all tasks", this.state.tasks);
     console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
     console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
-    let taskPass = this.state.tasks;
+    let taskPass = stringifyQuery(this.state.tasks);
     this.context.router.push({
       pathname: '/editTask',
       query: {
-        entireObj: this.state.tasks[e.target.id].detail,
+        entireObj: taskPass,
         specificValue: e.target.value
       }
     })
