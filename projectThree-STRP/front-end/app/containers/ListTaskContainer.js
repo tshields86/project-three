@@ -40,7 +40,6 @@ const ListTaskContainer = React.createClass({
     })
   },
 
-
   handleOnEdit(e){
     e.preventDefault();
     console.log("logging the e.target in ListTaskContainer", e.target.value);

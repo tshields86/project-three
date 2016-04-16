@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router';
-import mpx from './keys';
+import kk from './keys';
 
 const Main = React.createClass({
   componentDidMount: function(){
-    L.mapbox.accessToken = mpx;
-    var map = L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);
+    L.mapbox.accessToken = kk.mpx;
+    var map = L.mapbox.map('map', 'mapbox.streets').setView([40.7527, -73.9772], 13);
   },
   render: function(){
     const StyleAll = {
