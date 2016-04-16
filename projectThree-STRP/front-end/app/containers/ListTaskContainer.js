@@ -6,6 +6,10 @@ import ListTask from '../components/ListTask';
 import AddTask from '../components/AddTask';
 
 const ListTaskContainer = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   getInitialState: function() {
     return {
       isLoading: true,
@@ -33,6 +37,25 @@ const ListTaskContainer = React.createClass({
     })
   },
 
+
+  handleOnEdit(e){
+    e.preventDefault();
+    console.log("logging the e.target in ListTaskContainer", e.target.value);
+    console.log("handle on click edit");
+    console.log("logging in ListTaskContainer all tasks", this.state.tasks);
+    console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
+    console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
+    let taskPass = this.state.tasks;
+    this.context.router.push({
+      pathname: '/editTask',
+      query: {
+        entireObj: this.state.tasks[e.target.id].detail,
+        specificValue: e.target.value
+      }
+    })
+
+  },
+
   render: function() {
   console.log("this is the response from the backend", this.state.tasks);
   const tasksListElement = [];
@@ -48,9 +71,14 @@ const ListTaskContainer = React.createClass({
           <p>Location: {this.state.tasks[task].location}</p>
           <p>Category: {this.state.tasks[task].category}</p>
           <p>Detail: {this.state.tasks[task].detail}</p>
-          <Link to={`/editTask/${this.state.tasks[task]._id}`}>
-            <button id={this.state.tasks[task]._id} type="button">Edit</button>
-          </Link>
+          <button id={this.state.tasks[task]._id}
+                  value={[this.state.tasks[task].taskName,
+                          this.state.tasks[task].date,
+                          this.state.tasks[task].time,
+                          this.state.tasks[task].location,
+                          this.state.tasks[task].category,
+                          this.state.tasks[task].detail]}
+                  type="button" onClick={this.handleOnEdit}>Edit</button>
           <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
         </div>
     );

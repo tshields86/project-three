@@ -11,7 +11,6 @@ const EditContainer = React.createClass({
   },
 
 
-
   getInitialState: function(){
     return {
       taskName: null,
@@ -20,26 +19,41 @@ const EditContainer = React.createClass({
       location: null,
       category: null,
       detail: null,
-      tasks: null
     }
   },
 
+  // componentWillMount: function() {
+  //   console.log('component will mount');
+  // },
+  // componentWillMount: function() {
+  //   console.log('component will mount');
+  //   ajaxHelpers.getTask(this.props.params.id)
+  //   .then((response)=>{
+  //     console.log('response in componentWillMount', response);
+  //     this.setState({
+  //       tasks: response
+  //     });
+  //   });
+  // },
+
   componentDidMount: function() {
-    ajaxHelpers.getTask(this.props.params.id)
-    .then(function(response){
-      console.log('response', response);
-      this.setState({
-        tasks: response
-      });
-    }.bind(this));
+    const query = this.props.location.query
   },
 
+
+
   render: function () {
-    console.log("this is edit task comp tasks" , this.state.tasks);
+    console.log("logging in EditTaskContainer the passed info", this.props.location.query);
+
     return (
-    <div>
-      <EditTask tasks={this.state.tasks}/>
-    </div>
+      <div>
+        <Link to='listTasks'>
+          <button type="button" id='list-task'>Tasks</button>
+        </Link>
+        <div>
+          <EditTask />
+        </div>
+      </div>
     );
   }
   })
