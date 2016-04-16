@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 const AddStyle = {
-  border: '1px solid navy'
+  border: '1px solid black'
 }
 
 function EditTask(props) {

@@ -5,6 +5,8 @@ import {Link} from 'react-router';
 import ListTask from '../components/ListTask';
 import AddTask from '../components/AddTask';
 import { parse, stringify } from 'query-string';
+import HomeStyles from '../styles/HomeStyles';
+
 
 const ListTaskContainer = React.createClass({
   contextTypes: {
@@ -68,12 +70,12 @@ const ListTaskContainer = React.createClass({
     for (let task in this.state.tasks) {
       tasksListElement.push(
         <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
-          <p>Task: {this.state.tasks[task].taskName}</p>
-          <p>Date: {this.state.tasks[task].date}</p>
-          <p>Time: {this.state.tasks[task].time}</p>
-          <p>Location: {this.state.tasks[task].location}</p>
-          <p>Category: {this.state.tasks[task].category}</p>
-          <p>Detail: {this.state.tasks[task].detail}</p>
+          <p><b>Task:</b> {this.state.tasks[task].taskName}</p>
+          <p><b>Date:</b> {this.state.tasks[task].date}</p>
+          <p><b>Time:</b> {this.state.tasks[task].time}</p>
+          <p><b>Location:</b>{this.state.tasks[task].location}</p>
+          <p><b>Category:</b> {this.state.tasks[task].category}</p>
+          <p><b>Detail:</b> {this.state.tasks[task].detail}</p>
           <button id={this.state.tasks[task]._id}
                   value={[this.state.tasks[task].taskName,
                           this.state.tasks[task].date,
@@ -81,8 +83,8 @@ const ListTaskContainer = React.createClass({
                           this.state.tasks[task].location,
                           this.state.tasks[task].category,
                           this.state.tasks[task].detail]}
-                  type="button" onClick={this.handleOnEdit}>Edit</button>
-          <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete}>Delete</button>
+                  type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
+          <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
         </div>
     );
   }
@@ -91,7 +93,7 @@ const ListTaskContainer = React.createClass({
     <div>
       <h2>Show all Tasks</h2>
       <Link to='addTask'>
-          <button type='button' className='add-btn'>+</button>
+          <button type='button' className='add-btn' style={HomeStyles.button}>+</button>
       </Link>
       <ListTask tasks={tasksListElement}/>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import HomeStyles from '../styles/HomeStyles';
 
 const Home = React.createClass({
 
@@ -7,9 +8,9 @@ const Home = React.createClass({
     return (
       <div>
         <Link to='listTasks'>
-          <button type="button" id='list-task'>Tasks</button>
+          <button type="button" id='list-task' style={HomeStyles.button}>Tasks</button>
         </Link>
-        
+
       </div>
     );
   }

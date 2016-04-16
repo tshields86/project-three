@@ -1,27 +1,29 @@
 import React from 'react';
 import {Link} from 'react-router';
 import ListTask from './ListTask';
+import HomeStyles from '../styles/HomeStyles';
+
 
 const AddStyle = {
-  border: '1px solid navy'
+  border: '1px solid black'
 }
 
 function AddTask(props) {
   return (
     <div>
       <Link to='/'>
-        <button type="button" id='home'>Home</button>
+        <button type="button" id='home' style={HomeStyles.home}>Home</button>
       </Link>
       <h2>Add Task</h2>
       <div style={AddStyle}>
         <form onSubmit={props.onSubmitTask}>
           <div>
             <p><b>My Tasks: </b><br/><input type='text' name='mytask'  onChange={props.onAddTaskName}/></p>
-            Date: <input type='date' name='date' className='date'  onChange={props.onAddDate}/>
+            <b>Date:</b> <input type='date' name='date' className='date'  onChange={props.onAddDate}/>
               <br/><br/>
-            Location: <input type='text' name='' className='location' onChange={props.onAddLocation}/>
+            <b>Location:</b> <input type='text' name='' className='location' onChange={props.onAddLocation}/>
               <br/><br/>
-            Task Category:
+            <b>Task Category:</b>
             <br/>
             <select name="taskCategory" onChange={props.onAddCategory}>
               <option value="personal">Personal</option>
@@ -30,12 +32,12 @@ function AddTask(props) {
               <option value="other">Other</option>
             </select>
               <br/><br/>
-            Time:
+            <b>Time:</b>
               <br/>
             <input type='time' onChange={props.onAddTime}/>
               <br/>
               <br/>
-            Detail:
+            <b>Detail:</b>
               <br/>
             <textarea name='task-description'
                       maxLength='140'
@@ -44,11 +46,13 @@ function AddTask(props) {
           </div>
             <br/>
           <div>
-            <button className='task-add-btn' type='submit'>Add Task</button>
+            <button className='task-add-btn' type='submit' style={HomeStyles.button}>Add Task</button>
             <br/>
             <Link to='listTasks'>
-              <button className='done-add-btn' type='button'>Done</button>
+              <button className='done-add-btn' type='button' style={HomeStyles.button}>Done</button>
             </Link>
+            <br/>
+            <br/>
           </div>
         </form>
         {props.tasks}
