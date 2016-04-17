@@ -5,8 +5,9 @@ import kk from './keys';
 const Main = React.createClass({
   componentDidMount: function(){
     L.mapbox.accessToken = kk.mpx;
-    var map = L.mapbox.map('map', 'mapbox.streets').setView([40.7527, -73.9772], 13);
+    const map = L.mapbox.map('map', 'mapbox.streets').setView([40.7527, -73.9772], 13);
   },
+
   render: function(){
     const StyleAll = {
       margin: '0',

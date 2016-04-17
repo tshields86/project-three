@@ -6,6 +6,7 @@ import ListTask from '../components/ListTask';
 import AddTask from '../components/AddTask';
 import { parse, stringify } from 'query-string';
 import HomeStyles from '../styles/HomeStyles';
+import kk from '../components/keys';
 
 
 const ListTaskContainer = React.createClass({
@@ -20,18 +21,24 @@ const ListTaskContainer = React.createClass({
       tasks: []
     }
   },
+
   componentDidMount: function() {
     ajaxHelpers.getTasks()
     //TODO show my tasks
     .then(function(response){
-      console.log('console.log', response.data.tasks);
+      console.log('logging tasks aka juicy stuff', response.data.tasks);
       this.setState({
         tasks: response.data.tasks
       });
     }.bind(this));
+
+
+
+    //  calling pointOnMap
+    // this.pointOnMap()
+
+
   },
-
-
 
   handleOnDelete(e){
     console.log('We want to delete', e.target.id)
@@ -60,8 +67,42 @@ const ListTaskContainer = React.createClass({
 
   },
 
+  // map blips fxn
+  pointOnMap:function(longitude, latitude, color, taskName){
+    L.mapbox.featureLayer({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          latitude,
+          longitude
+        ]
+      },
+      properties: {
+        title: taskName,
+        'marker-size': 'large',
+        'marker-color': color,
+        'marker-symbol': 'restaurant'
+      }
+    })
+  },
+
   render: function() {
   console.log("this is the response from the backend", this.state.tasks);
+
+
+  for(let tsk =0; tsk< this.state.tasks.length ; tsk++){
+    console.log("fuck");
+    ajaxHelpers.geoCode(this.state.tasks[tsk].location)
+    .then((response)=>{
+      console.log("logging responses from geocode api", response);
+      let lng = response.data.results[0].geometry.location.lng;
+      let lat = response.data.results[0].geometry.location.lat;
+      this.pointOnMap(lng, lat, 'red', 'name');
+    })
+  }
+
+
   const tasksListElement = [];
   const listStyle = {
     border: "1px solid black"
