@@ -31,13 +31,15 @@ api.get('/task/:id', (req, res) => {
     });
   });
 
-  // api.put('/task', (req, res) => {
-  //   console.log('api.post /task');
-  //   // create a new task
-  //   collection.insert(req.body, (err, result) => {
-  //     res.json(result);
-  //   });
-  // });
+  api.put('/task', (req, res) => {
+    console.log('put on!');
+    let identifier = req.body.identifier.taskMongoid;
+    let objTochange = req.body.objToChange;
+    collection.update({"_id": ObjectID(identifier)}, objTochange , (err, result) => {
+      console.log("result after put fxn", result);
+      res.json(result);
+    });
+  });
 
   api.delete('/task/:id', (req, res) => {
     console.log("this is the delete promise req.params.id", req.params.id);

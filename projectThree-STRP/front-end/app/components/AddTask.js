@@ -11,8 +11,8 @@ const AddStyle = {
 function AddTask(props) {
   return (
     <div>
-      <Link to='/'>
-        <button type="button" id='home' style={HomeStyles.home}>Home</button>
+      <Link to='listTasks'>
+        <button type="button" id='list-task' style={HomeStyles.button}>Tasks</button>
       </Link>
       <h2>Add Task</h2>
       <div style={AddStyle}>
@@ -46,11 +46,13 @@ function AddTask(props) {
           </div>
             <br/>
           <div>
-            <button className='task-add-btn' type='submit' style={HomeStyles.button}>Add Task</button>
-            <br/>
-            <Link to='listTasks'>
-              <button className='done-add-btn' type='button' style={HomeStyles.button}>Done</button>
-            </Link>
+            <button className='task-add-btn'
+                    type='submit'
+                    style={HomeStyles.button}
+                    onClick={props.onSubmitTask}
+                    >ADD
+                </button>
+
             <br/>
             <br/>
           </div>

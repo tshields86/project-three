@@ -5,7 +5,7 @@ import kk from './keys';
 const Main = React.createClass({
   componentDidMount: function(){
     L.mapbox.accessToken = kk.mpx;
-    Window.map = L.mapbox.map('map', 'mapbox.comic').setView([40.7527, -73.9772], 13);
+    Window.map = L.mapbox.map('map', 'mapbox.wheatpaste').setView([40.7527, -73.9772], 13);
 
   },
 
@@ -15,14 +15,16 @@ const Main = React.createClass({
       boxSizing: 'border-box',
       padding: "0",
       textAlign: 'center',
-      fontFamily: "Palatino Linotype, Book Antiqua, Palatino, serif",
+      fontFamily: "helvetica",
+      color: "#F15A22"
     }
     const StyleHeader = {
       position: 'fixed',
       margin: '0auto',
       textAlign: "center",
-      fontSize: "50px",
-      margin: "15px 50px 0px 50px"
+      fontSize: "60px",
+      margin: "15px 50px 0px 50px",
+      textShadow: '0vw 0 black, 0vw 0vw black, 0vw 0 black, -1vw 0vw black'
     }
     const StyleMap = {
       width: '100vw',
@@ -36,7 +38,8 @@ const Main = React.createClass({
       width: '25vw',
       zIndex: '3000',
       float: 'right',
-      marginRight: '2vw'
+      marginRight: '2vw',
+      background: "rgba(20,247,239,0.9)",
     }
 
     return(
