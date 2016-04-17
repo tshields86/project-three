@@ -1,4 +1,5 @@
 import axios from 'axios';
+import kk from '../components/keys.js';
 
 const helpers = {
   getTasks: function(){
@@ -16,7 +17,10 @@ const helpers = {
   },
   updateTask: function(task){
     return axios.put('http://localhost:3000/api/task/'+ task);
-  }
+  },
+  geoCode: function(building, street){
+    return axios.put('https://maps.googleapis.com/maps/api/geocode/json?address=' + building + '+' + street +',+New+York,+NY&key=' + kk.goog ;);
+  },
 }
 
 

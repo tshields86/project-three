@@ -14,31 +14,40 @@ const EditContainer = React.createClass({
 
   getInitialState: function(){
     return {
-      taskName: null,
-      date: null,
-      time: null,
-      location: null,
-      category: null,
-      detail: null,
-      tasks: null
+      taskName: this.props.params.taskName,
+      date: this.props.params.date,
+      time: this.props.params.time,
+      location: this.props.params.location,
+      category: this.props.params.category,
+      detail: this.props.params.detail
     }
   },
 
-  componentDidMount: function() {
-    ajaxHelpers.getTask(this.props.params.id)
-    .then(function(response){
-      console.log('response', response);
-      this.setState({
-        tasks: response
-      });
-    }.bind(this));
-  },
+  // componentDidMount: function() {
+  //   ajaxHelpers.getTask(this.props.params.id)
+  //   .then(function(response){
+  //     console.log('response', response);
+  //     this.setState({
+  //       tasks: response
+  //     });
+  //   }.bind(this));
+  // },
 
   render: function () {
-    console.log("this is edit task comp tasks" , this.state.tasks);
+
+    const objEdit = {
+        taskName: this.props.params.taskName,
+        date: this.props.params.date,
+        time: this.props.params.time,
+        location: this.props.params.location,
+        category: this.props.params.category,
+        detail: this.props.params.detail
+      }
+    console.log("this.props.params.date", this.props.params.date);
+    console.log("this is edit task comp tasks" , objEdit);
     return (
     <div>
-      <EditTask tasks={this.state.tasks}/>
+      <EditTask tasks={objEdit}/>
     </div>
     );
   }
