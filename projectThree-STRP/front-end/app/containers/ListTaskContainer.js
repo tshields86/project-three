@@ -55,14 +55,15 @@ const ListTaskContainer = React.createClass({
     // console.log("logging in ListTaskContainer all tasks", this.state.tasks);
     // console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
     // console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
-    // let taskPass = stringifyQuery(this.state.tasks);
-    // this.context.router.push({
-    //   pathname: '/editTask',
-    //   query: {
-    //     entireObj: taskPass,
-    //     specificValue: e.target.value
-    //   }
-    // })
+    //
+    
+    this.context.router.push({
+      pathname: '/editTask',
+      query: {
+        entireObj: taskPass,
+        specificValue: e.target.value
+      }
+    })
 
   },
 
@@ -112,9 +113,9 @@ const ListTaskContainer = React.createClass({
               <p><b>Location:</b>{task.location}</p>
               <p><b>Category:</b> {task.category}</p>
               <p><b>Detail:</b> {task.detail}</p>
-              <Link to={`/editTask/${task._id}`}>
-                <button id={task._id} type="button" style={HomeStyles.button}>Edit</button>
-              </Link>
+              // <Link to={`/editTask/${task._id}`}>
+              <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button>
+              // </Link>
               <button id={task._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
             </div>
     );
