@@ -5,7 +5,7 @@ import kk from './keys';
 const Main = React.createClass({
   componentDidMount: function(){
     L.mapbox.accessToken = kk.mpx;
-    Window.map = L.mapbox.map('map', 'mapbox.comic').setView([40.7527, -73.9772], 13);
+    Window.map = L.mapbox.map('map', 'mapbox.wheatpaste').setView([40.7527, -73.9772], 13);
 
   },
 
@@ -16,6 +16,7 @@ const Main = React.createClass({
       padding: "0",
       textAlign: 'center',
       fontFamily: "Palatino Linotype, Book Antiqua, Palatino, serif",
+      color: "#f15a22",
     }
     const StyleHeader = {
       position: 'fixed',
