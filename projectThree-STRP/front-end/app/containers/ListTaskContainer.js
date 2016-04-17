@@ -41,8 +41,7 @@ const ListTaskContainer = React.createClass({
   },
 
   handleOnDelete(e){
-    console.log('We want to delete', e.target.id)
-    console.log("we finna logging task.id", e.target.id);
+    console.log('handle on delete clicked, e.targetid:', e.target.id)
     ajaxHelpers.deleteTask(e.target.id)
     .then(function(response){
       console.log("this is the response from the backend", response)
@@ -51,19 +50,19 @@ const ListTaskContainer = React.createClass({
 
   handleOnEdit(e){
     e.preventDefault();
-    console.log("logging the e.target in ListTaskContainer", e.target.value);
-    console.log("handle on click edit");
-    console.log("logging in ListTaskContainer all tasks", this.state.tasks);
-    console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
-    console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
-    let taskPass = stringifyQuery(this.state.tasks);
-    this.context.router.push({
-      pathname: '/editTask',
-      query: {
-        entireObj: taskPass,
-        specificValue: e.target.value
-      }
-    })
+    console.log("logging the e.target in ListTaskContainer", e.target);
+    // console.log("handle on click edit");
+    // console.log("logging in ListTaskContainer all tasks", this.state.tasks);
+    // console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
+    // console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
+    // let taskPass = stringifyQuery(this.state.tasks);
+    // this.context.router.push({
+    //   pathname: '/editTask',
+    //   query: {
+    //     entireObj: taskPass,
+    //     specificValue: e.target.value
+    //   }
+    // })
 
   },
 
@@ -88,12 +87,9 @@ const ListTaskContainer = React.createClass({
   },
 
   render: function() {
-  console.log("this is the response from the backend", this.state.tasks);
 
-
-  for(let tsk =0; tsk< this.state.tasks.length ; tsk++){
-    console.log("fuck");
-    ajaxHelpers.geoCode(this.state.tasks[tsk].location)
+  for(let task in this.state.tasks){
+    ajaxHelpers.geoCode(this.state.tasks[task].location)
     .then((response)=>{
       console.log("logging responses from geocode api", response);
       let lng = response.data.results[0].geometry.location.lng;
@@ -107,27 +103,46 @@ const ListTaskContainer = React.createClass({
   const listStyle = {
     border: "1px solid black"
   }
-    for (let task in this.state.tasks) {
-      tasksListElement.push(
-        <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
-          <p><b>Task:</b> {this.state.tasks[task].taskName}</p>
-          <p><b>Date:</b> {this.state.tasks[task].date}</p>
-          <p><b>Time:</b> {this.state.tasks[task].time}</p>
-          <p><b>Location:</b>{this.state.tasks[task].location}</p>
-          <p><b>Category:</b> {this.state.tasks[task].category}</p>
-          <p><b>Detail:</b> {this.state.tasks[task].detail}</p>
-          <button id={this.state.tasks[task]._id}
-                  value={[this.state.tasks[task].taskName,
-                          this.state.tasks[task].date,
-                          this.state.tasks[task].time,
-                          this.state.tasks[task].location,
-                          this.state.tasks[task].category,
-                          this.state.tasks[task].detail]}
-                  type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
-          <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
-        </div>
+  this.state.tasks.map( (task, index) => {
+    tasksListElement.push(
+      <div key={index} style={listStyle} id={task._id} className="task-card">
+              <p><b>Task:</b> {task.taskName}</p>
+              <p><b>Date:</b> {task.date}</p>
+              <p><b>Time:</b> {task.time}</p>
+              <p><b>Location:</b>{task.location}</p>
+              <p><b>Category:</b> {task.category}</p>
+              <p><b>Detail:</b> {task.detail}</p>
+              <Link to={`/editTask/${task._id}`}>
+                <button id={task._id} type="button" style={HomeStyles.button}>Edit</button>
+              </Link>
+              <button id={task._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
+            </div>
     );
-  }
+  });
+                // <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
+//for edit button use id={index} to go way of looping through all tasks and grabbing the values of the correct selected task (finding it by index) and run that in this file above
+//for edit button use id={task._id} to send mongo id to edittaskcontainer to preform get on just one task using mongo id
+  //   for (let task in this.state.tasks) {
+  //     tasksListElement.push(
+  //       <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
+  //         <p><b>Task:</b> {this.state.tasks[task].taskName}</p>
+  //         <p><b>Date:</b> {this.state.tasks[task].date}</p>
+  //         <p><b>Time:</b> {this.state.tasks[task].time}</p>
+  //         <p><b>Location:</b>{this.state.tasks[task].location}</p>
+  //         <p><b>Category:</b> {this.state.tasks[task].category}</p>
+  //         <p><b>Detail:</b> {this.state.tasks[task].detail}</p>
+  //         <button id={this.state.tasks[task]._id}
+  //                 name={this.state.tasks[task].taskName}
+  //                 value={[this.state.tasks[task].date,
+  //                         this.state.tasks[task].time,
+  //                         this.state.tasks[task].location,
+  //                         this.state.tasks[task].category,
+  //                         this.state.tasks[task].detail]}
+  //                 type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
+  //         <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
+  //       </div>
+  //   );
+  // }
 
   return (
     <div>
