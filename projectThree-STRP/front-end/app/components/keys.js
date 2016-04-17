@@ -1,3 +1,5 @@
-const mpx = 'pk.eyJ1Ijoicnlob3RoIiwiYSI6ImNpbTE3ZTNoajA4dnh0eWtycGNmOTZudzMifQ.Ca9ySwzlSbTZJL3_uOGkAg';
-
-export default mpx
+const kk = {
+  mpx: 'pk.eyJ1Ijoicnlob3RoIiwiYSI6ImNpbjNqOTNrdDBidXB3Ymx1dDhpMjM3eDAifQ.f5WM2xFCRfrm1WNLkaGEPw',
+  goog: 'AIzaSyCA7AQJh6LxL3Vhxt_dO-MJ7Md7dnmVaDQ'
+};
+export default kk

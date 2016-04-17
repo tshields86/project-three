@@ -4,12 +4,12 @@ import ajaxHelpers from '../utils/ajaxHelpers';
 import {Link} from 'react-router';
 import ListTask from '../components/ListTask';
 import EditTask from '../components/EditTask';
+import HomeStyles from '../styles/HomeStyles';
 
 const EditContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-
 
 
   getInitialState: function(){

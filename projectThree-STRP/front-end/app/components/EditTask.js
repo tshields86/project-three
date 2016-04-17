@@ -1,12 +1,17 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-const AddStyle = {
-  border: '1px solid navy'
-}
+// const AddStyle = {
+//   border: '1px solid black'
+// }
 
 function EditTask(props) {
   console.log("props.tasks in EditTask.js", props.tasks);
+  return (
+    {props}
+  )
+}
+function EditTask(props) {
   return (
     <div>
       <h2>Edit Task</h2>

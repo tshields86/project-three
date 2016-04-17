@@ -8,15 +8,14 @@ import ListTaskContainer from '../containers/ListTaskContainer';
 import EditTaskContainer from '../containers/EditTaskContainer';
 
 //jsx router. tell our data cop where to send our data
+//      <Route path='editTask' component={EditTaskContainer}/>
 const routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
       <Route path='addTask' component={AddContainer}/>
       <Route path='listTasks' component={ListTaskContainer}/>
-      <Route path='editTask'>
-          <Route path='/editTask/:id' component={EditTaskContainer}></Route>
-      </Route>
+      <Route path='editTask' component={EditTaskContainer}/>
     </Route>
   </Router>
 );
