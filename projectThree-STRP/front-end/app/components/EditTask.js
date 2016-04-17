@@ -6,6 +6,7 @@ const AddStyle = {
 }
 
 function EditTask(props) {
+  console.log("props.tasks in EditTask.js", props.tasks);
   return (
     <div>
       <h2>Edit Task</h2>

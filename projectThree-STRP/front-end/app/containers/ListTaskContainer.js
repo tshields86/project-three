@@ -50,25 +50,26 @@ const ListTaskContainer = React.createClass({
 
   handleOnEdit(e){
     e.preventDefault();
-    console.log("logging the e.target in ListTaskContainer", e.target);
-    // console.log("handle on click edit");
+    console.log("handle on click edit");
+    console.log("logging the e.target.id in ListTaskContainer", e.target.id);
     // console.log("logging in ListTaskContainer all tasks", this.state.tasks);
     // console.log("logging in ListTaskContainer one task", this.state.tasks[0]);
     // console.log("logging in ListTaskContainer one task", this.state.tasks[0].detail);
-    //
-    
+
+    let taskPass = this.state.tasks;
     this.context.router.push({
       pathname: '/editTask',
       query: {
-        entireObj: taskPass,
-        specificValue: e.target.value
+        specificID: e.target.id,
+        specificID: e.target.id,
+        specificID: e.target.id
       }
     })
-
   },
 
   // map blips fxn
-  pointOnMap:function(longitude, latitude, color, taskName){
+  pointOnMap:function(longitude, latitude, color, taskName, desc, taskIndex){
+    console.log("doing some pointOnMap");
     L.mapbox.featureLayer({
       type: 'Feature',
       geometry: {
@@ -80,11 +81,12 @@ const ListTaskContainer = React.createClass({
       },
       properties: {
         title: taskName,
+        description:  desc,
         'marker-size': 'large',
         'marker-color': color,
-        'marker-symbol': 'restaurant'
+        'marker-symbol': taskIndex
       }
-    })
+    }).addTo(Window.map)
   },
 
   render: function() {
@@ -92,10 +94,13 @@ const ListTaskContainer = React.createClass({
   for(let task in this.state.tasks){
     ajaxHelpers.geoCode(this.state.tasks[task].location)
     .then((response)=>{
-      console.log("logging responses from geocode api", response);
-      let lng = response.data.results[0].geometry.location.lng;
-      let lat = response.data.results[0].geometry.location.lat;
-      this.pointOnMap(lng, lat, 'red', 'name');
+      let taskHolder = parseInt(task)+1;
+      console.log(taskHolder);
+      let lat = response.data.results[0].geometry.location.lng;
+      let lng = response.data.results[0].geometry.location.lat;
+      let taskName = this.state.tasks[task].taskName;
+      let detail = this.state.tasks[task].detail;
+      this.pointOnMap(lng, lat, '#BE9A6B', taskName, detail, taskHolder);
     })
   }
 
@@ -120,30 +125,30 @@ const ListTaskContainer = React.createClass({
             </div>
     );
   });
-                // <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
-//for edit button use id={index} to go way of looping through all tasks and grabbing the values of the correct selected task (finding it by index) and run that in this file above
-//for edit button use id={task._id} to send mongo id to edittaskcontainer to preform get on just one task using mongo id
-  //   for (let task in this.state.tasks) {
-  //     tasksListElement.push(
-  //       <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
-  //         <p><b>Task:</b> {this.state.tasks[task].taskName}</p>
-  //         <p><b>Date:</b> {this.state.tasks[task].date}</p>
-  //         <p><b>Time:</b> {this.state.tasks[task].time}</p>
-  //         <p><b>Location:</b>{this.state.tasks[task].location}</p>
-  //         <p><b>Category:</b> {this.state.tasks[task].category}</p>
-  //         <p><b>Detail:</b> {this.state.tasks[task].detail}</p>
-  //         <button id={this.state.tasks[task]._id}
-  //                 name={this.state.tasks[task].taskName}
-  //                 value={[this.state.tasks[task].date,
-  //                         this.state.tasks[task].time,
-  //                         this.state.tasks[task].location,
-  //                         this.state.tasks[task].category,
-  //                         this.state.tasks[task].detail]}
-  //                 type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
-  //         <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
-  //       </div>
-  //   );
-  // }
+//                 <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
+// for edit button use id={index} to go way of looping through all tasks and grabbing the values of the correct selected task (finding it by index) and run that in this file above
+// for edit button use id={task._id} to send mongo id to edittaskcontainer to preform get on just one task using mongo id
+//     for (let task in this.state.tasks) {
+//       tasksListElement.push(
+//         <div key={this.state.tasks[task]._id} style={listStyle} id={this.state.tasks[task]._id} className="task-card">
+//           <p><b>Task:</b> {this.state.tasks[task].taskName}</p>
+//           <p><b>Date:</b> {this.state.tasks[task].date}</p>
+//           <p><b>Time:</b> {this.state.tasks[task].time}</p>
+//           <p><b>Location:</b>{this.state.tasks[task].location}</p>
+//           <p><b>Category:</b> {this.state.tasks[task].category}</p>
+//           <p><b>Detail:</b> {this.state.tasks[task].detail}</p>
+//           <button id={this.state.tasks[task]._id}
+//                   name={this.state.tasks[task].taskName}
+//                   value={[this.state.tasks[task].date,
+//                           this.state.tasks[task].time,
+//                           this.state.tasks[task].location,
+//                           this.state.tasks[task].category,
+//                           this.state.tasks[task].detail]}
+//                   type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button><br/>
+//           <button id={this.state.tasks[task]._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
+//         </div>
+//     );
+//   }
 
   return (
     <div>
