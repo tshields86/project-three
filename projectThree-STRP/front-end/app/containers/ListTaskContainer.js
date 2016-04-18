@@ -21,6 +21,10 @@ const ListTaskContainer = React.createClass({
     }
   },
 
+  componentDidUpdate: function() {
+    // this.reblip();
+  },
+
   componentDidMount: function() {
     ajaxHelpers.getTasks()
     //TODO show my tasks
@@ -29,13 +33,14 @@ const ListTaskContainer = React.createClass({
         tasks: response.data.tasks
       });
     }.bind(this));
+    // this.reblip();
   },
 
   handleOnDelete(e){
     ajaxHelpers.deleteTask(e.target.id)
     .then(function(response){
     })
-    setTimeout(()=>{this.context.router.push({pathname: '/'})}, 5)
+    setTimeout(()=>{this.context.router.push({pathname: '/deleteTask'})}, 10)
   },
 
   handleOnEdit(e){
@@ -77,21 +82,23 @@ const ListTaskContainer = React.createClass({
     }).addTo(Window.map)
   },
 
+  reblip: function(){
+    for(let task in this.state.tasks){
+      ajaxHelpers.geoCode(this.state.tasks[task].location)
+      .then((response)=>{
+        let taskHolder = parseInt(task)+1;
+        let lat = response.data.results[0].geometry.location.lng;
+        let lng = response.data.results[0].geometry.location.lat;
+        let taskName = this.state.tasks[task].taskName;
+        let detail = this.state.tasks[task].detail;
+        this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder);
+      })
+    }
+  },
+
   render: function() {
 
-  for(let task in this.state.tasks){
-    ajaxHelpers.geoCode(this.state.tasks[task].location)
-    .then((response)=>{
-      let taskHolder = parseInt(task)+1;
-      let lat = response.data.results[0].geometry.location.lng;
-      let lng = response.data.results[0].geometry.location.lat;
-      let taskName = this.state.tasks[task].taskName;
-      let detail = this.state.tasks[task].detail;
-      this.pointOnMap(lng, lat, '#BE9A6B', taskName, detail, taskHolder);
-    })
-  }
-
-
+  this.reblip();
   const tasksListElement = [];
   const listStyle = {
     border: "1px solid black"
@@ -99,14 +106,14 @@ const ListTaskContainer = React.createClass({
   this.state.tasks.map( (task, index) => {
     tasksListElement.push(
       <div key={index} style={listStyle} id={task._id} className="task-card">
-              <p><b>Task:</b> {task.taskName}</p>
-              <p><b>Date:</b> {task.date}</p>
-              <p><b>Time:</b> {task.time}</p>
-              <p><b>Location:</b>{task.location}</p>
-              <p><b>Category:</b> {task.category}</p>
-              <p><b>Detail:</b> {task.detail}</p>
-              <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>Edit</button>
-              <button id={task._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>Delete</button>
+              <p><b>Task: </b> {task.taskName}</p>
+              <p><b>Date: </b> {task.date}</p>
+              <p><b>Time: </b> {task.time}</p>
+              <p><b>Location: </b>{task.location}</p>
+              <p><b>Category: </b> {task.category}</p>
+              <p><b>Detail: </b> {task.detail}</p>
+              <button id={index} type="button" onClick={this.handleOnEdit} style={HomeStyles.button}>&#x270D;</button>
+              <button id={task._id} type="button" onClick={this.handleOnDelete} style={HomeStyles.button}>&#10005;</button>
             </div>
     );
   });
@@ -115,10 +122,11 @@ const ListTaskContainer = React.createClass({
     <div>
       <h2>Show all Tasks</h2>
       <Link to='/'>
-          <button type="button" id='home' style={HomeStyles.home}>Home</button>
+          <button type="button" id='home' style={HomeStyles.home}>&#x25B2;</button>
       </Link>
+    <br></br>
       <Link to='addTask'>
-          <button type='button' className='add-btn' style={HomeStyles.button}>+</button>
+          <button type='button' className='add-btn' style={HomeStyles.button}>&#x2b;</button>
       </Link>
       <ListTask tasks={tasksListElement}/>
     </div>

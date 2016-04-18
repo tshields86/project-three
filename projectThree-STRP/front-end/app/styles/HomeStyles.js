@@ -1,15 +1,15 @@
 let Styles = {
   button: {
-    width: "19vw",
-    fontSize: "20px",
-    fontFamily: "Comic Sans MS, cursive, sans-serif",
-    margin: "10px"
+    width: "10vw",
+    fontSize: "1vw",
+    fontFamily: "helvetica",
+    margin: "1vw"
   },
   home: {
-    width: "19vw",
-    fontSize: "20px",
-    margin: "10px",
-    fontFamily: "Comic Sans MS, cursive, sans-serif"
+    width: "10vw",
+    fontSize: "1vw",
+    margin: "1vw",
+    fontFamily: "helvetica"
   }
 }
  export default Styles;

@@ -14,25 +14,26 @@ function EditTask(props) {
       <div style={AddStyle}>
         <form onSubmit={props.onSubmitTask}>
           <div>
-            <b>My Tasks: </b>
+            <b>Task: </b>
             <input  type='text'
                     name='mytask'
                     onChange={props.onEditTaskName}
                     value={props.thisTask.taskName} />
-            <b>Date:</b>
+                  <br/><br/>
+            <b>Date: </b>
             <input  type='date'
                     name='date'
                     className='date'
                     onChange={props.onEditDate}
                     value={props.thisTask.date} />
-            <b>Location:</b>
+                  <br/><br/>
+            <b>Location: </b>
             <input  type='text'
                     name=''
                     className='location'
                     onChange={props.onEditLocation}
                     value={props.thisTask.location} />
             <br/><br/>
-            <b>Task Category:</b>
             <select name="taskCategory"
                     onChange={props.onEditCategory}
                     value={props.thisTask.category} >
@@ -42,16 +43,16 @@ function EditTask(props) {
               <option value="other">Other</option>
             </select>
             <br/><br/>
-            <b>Time:</b>
+            <b>Time: </b>
             <input  type='time'
                     onChange={props.onEditTime}
                     value={props.thisTask.time} />
             <br/><br/>
-            <b>Detail:</b>
+            <b>Description: </b>
             <br/><br/>
             <textarea name='task-description'
                       maxLength='140'
-                      placeholder='(Detail description...)'
+                      placeholder='Beers and babes...'
                       onChange={props.onEditDetail}
                       value={props.thisTask.detail} />
           </div>
@@ -61,12 +62,9 @@ function EditTask(props) {
               type='submit'
               style={HomeStyles.button}
               id={props.thisTask.taskMongoid}
-              >Update (+)
+              >&#x21ea;
             </button>
           </div>
-          <Link to='listTasks'>
-            <button className='done-edit-btn' type='button' style={HomeStyles.button}>Done</button>
-          </Link>
         </form>
       </div>
     </div>
