@@ -9,7 +9,7 @@ export default function() {
 // get all tasks
   api.get('/tasks', (req, res) => {
     console.log('show me tasks');
-    collection.find().sort({date: -1, time: -1}).toArray((err, docs) => {
+    collection.find().sort({date: 1, time: 1}).toArray((err, docs) => {
       res.json({ tasks : docs });
     });
   });
