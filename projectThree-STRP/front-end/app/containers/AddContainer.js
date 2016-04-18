@@ -8,6 +8,7 @@ const AddContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
+
   getInitialState: function(){
     return {
       taskName: null,
@@ -49,6 +50,7 @@ const AddContainer = React.createClass({
       detail: e.target.value
     })
   },
+
   componentDidMount: function() {
     ajaxHelpers.getTasks()
     //TODO show my tasks
@@ -76,14 +78,6 @@ const AddContainer = React.createClass({
 
   handleOnSubmitTask: function(e){
     e.preventDefault();
-    this.setState({
-      taskName: this.state.taskName,
-      date: this.state.date,
-      time: this.state.time,
-      location: this.state.location,
-      category: this.state.category,
-      detail: this.state.detail
-    });
 
     const task = {
       taskName: this.state.taskName,
@@ -98,23 +92,13 @@ const AddContainer = React.createClass({
     ajaxHelpers.addTask(task)
     .then(function(response){
       console.log('Response:', response);
-    })
+      // routingToList();
+      })
+    };
+    setTimeout(()=>{
+      this.context.router.push({pathname: '/listTasks'});
+    }, 10)
 
-    console.log("this is the weird this in the onSubmitTask", this);
-    this.rerender();
-    }
-
-  },
-
-  rerender: function() {
-    ajaxHelpers.getTasks()
-    //TODO show my tasks
-    .then(function(response){
-      console.log('console.log', response.data.tasks);
-      this.setState({
-        tasks: response.data.tasks
-      });
-    }.bind(this));
   },
 
   render: function () {
