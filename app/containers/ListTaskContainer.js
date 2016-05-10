@@ -22,6 +22,7 @@ const ListTaskContainer = React.createClass({
   },
 
   componentDidUpdate: function() {
+
     // this.reblip();
   },
 
@@ -63,7 +64,7 @@ const ListTaskContainer = React.createClass({
 
   // map blips fxn
   pointOnMap:function(longitude, latitude, color, taskName, desc, taskIndex){
-    L.mapbox.featureLayer({
+    L.mapbox.marker({
       type: 'Feature',
       geometry: {
         type: 'Point',
@@ -83,6 +84,7 @@ const ListTaskContainer = React.createClass({
   },
 
   reblip: function(){
+    let markers = [];
     for(let task in this.state.tasks){
       ajaxHelpers.geoCode(this.state.tasks[task].location)
       .then((response)=>{
@@ -91,9 +93,10 @@ const ListTaskContainer = React.createClass({
         let lng = response.data.results[0].geometry.location.lat;
         let taskName = this.state.tasks[task].taskName;
         let detail = this.state.tasks[task].detail;
-        this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder);
-      })
-    }
+        markers.push(this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder) );
+        console.log("markers", markers);
+      });
+      }
   },
 
   render: function() {

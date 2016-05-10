@@ -67,3 +67,10 @@ var grand = {
     }).addTo(grand.map)
   }
 };
+
+
+Window.map.featureLayer.on('ready', function(e) {
+    var markers = [];
+    this.eachLayer(function(marker) { markers.push(marker); });
+    removeLayer(markers);
+});
