@@ -1,7 +1,7 @@
 {
-  "name": "STRPers",
+  "name": "Mapado-NYC",
   "version": "0.1.0",
-  "description": "STRPers project-three",
+  "description": "Mapado-NYC",
   "main": "index.js",
   "scripts": {
     "production": "webpack -p",
