@@ -55,7 +55,6 @@ const AddContainer = React.createClass({
     ajaxHelpers.getTasks()
     //TODO show my tasks
     .then(function(response){
-      console.log("componentDidMount",response.data.tasks);
       this.setState({
         tasks: response.data.tasks
       });
