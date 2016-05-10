@@ -24,6 +24,16 @@ const EditContainer = React.createClass({
   },
 
 
+  componentWillMount: function() {
+    console.log('component will mount');
+    ajaxHelpers.getTask(this.props.params.id)
+    .then((response)=>{
+      console.log('response in componentWillMount', response);
+      this.setState({
+        tasks: response
+      });
+    });
+  },
 
   handleOnTaskName: function(e){
     this.setState({

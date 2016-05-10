@@ -10,6 +10,7 @@ import DeleteTemp from '../containers/DeleteTemp';
 
 //jsx router. tell our data cop where to send our data
 //      <Route path='editTask' component={EditTaskContainer}/>
+        // <Route path='/editTask/:id' component={EditTaskContainer}></Route>
 const routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
