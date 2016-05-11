@@ -4,14 +4,13 @@ import kk from './keys';
 
 const Main = React.createClass({
 
-
   componentWillMount: function(){
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log("user latitude" + position.coords.latitude);
         console.log("user longitude" + position.coords.longitude);
         let userLat = position.coords.latitude;
         let userLong = position.coords.longitude;
-    L.mapbox.accessToken = kk.mpx;
+    L.mapbox.accessToken = (process.env.MPX || kk.mpx);
     Window.map = L.mapbox.map('map', 'mapbox.wheatpaste').setView(([userLat, userLong]||[40.7527, -73.9772]), 13);
     L.mapbox.featureLayer({
     type: 'Feature',
@@ -34,9 +33,7 @@ const Main = React.createClass({
 
   render: function(){
     const StyleAll = {
-      margin: '0',
       boxSizing: 'border-box',
-      padding: "0",
       textAlign: 'center',
       fontFamily: "helvetica",
       color: "#F5F5F5"
