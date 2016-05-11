@@ -1,16 +1,18 @@
 {
   "name": "Mapado-NYC",
-  "version": "0.1.0",
-  "description": "Mapado-NYC",
+  "version": "1.0.0",
+  "description": "Mapado-NYC: Task visualizer",
   "main": "index.js",
   "scripts": {
     "production": "webpack -p",
-    "start": "webpack-dev-server --progress --inline --hot"
+    "start": "node app.js",
+    "start-dev": "webpack-dev-server --progress --inline --hot"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.9.1",
+    "express": "^4.13.4",
     "lodash": "^4.8.2",
     "query-string": "^4.1.0",
     "react": "^0.14.8",
