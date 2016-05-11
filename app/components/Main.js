@@ -50,14 +50,14 @@ const Main = React.createClass({
     const StyleMap = {
       width: '100vw',
       height: '65vw',
-      zIndex: '-3000',
+      zIndex: -3000,
       position: 'fixed',
-      border: "0",
-      padding: "0"
+      border: 0,
+      padding: 0
     };
     const StyleData = {
       width: '25vw',
-      zIndex: '3000',
+      zIndex: 3000,
       float: 'right',
       marginRight: '2vw',
       background: "rgba(1,1,1,0.75)",
