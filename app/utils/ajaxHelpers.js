@@ -19,8 +19,8 @@ const helpers = {
     return axios.put('https://mapado-nyc-backend.herokuapp.com/api/task/', task);
   },
   geoCode: function(address){
-    return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +',+New+York,+NY&key=' + process.env.GOOG;
-  },
+    return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +',+New+York,+NY&key=' + process.env.GOOG);
+  }
 }
 
 export default helpers;
