@@ -13,16 +13,51 @@ const ListTaskContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
+
+
   getInitialState: function() {
     return {
       isLoading: true,
       _id: '',
-      tasks: []
+      tasks: [],
+      mapTasks: []
     }
   },
 
-  componentDidUpdate: function() {
+  componentWillMount: function(){
 
+  },
+
+  componentDidMount: function(){
+  },
+
+  componentDidUpdate: function() {
+    console.log("DID UPDATE!!");
+    // console.log("this.state.tasks", this.state.tasks);
+    // Window.map.featureLayer.on('ready', function(e){
+    //   let marks = []
+    //   this.eachLayer(function(marker) {
+    //     console.log("this is a marker", marker);
+    //     marks.push(marker)
+    //   })
+    //   console.log("somemarks", marks);
+    // })
+    // L.mapbox.clearLayers(L.mapbox.featureLayer)
+
+    // looping through
+    for(let task in this.state.tasks){
+      ajaxHelpers.geoCode(this.state.tasks[task].location)
+      .then((response)=>{
+        let taskHolder = parseInt(task)+1;
+        // console.log("geometry prob: ", response.data.results);
+        let lat = response.data.results[0].geometry.location.lng;
+        let lng = response.data.results[0].geometry.location.lat;
+        let taskName = this.state.tasks[task].taskName;
+        let detail = this.state.tasks[task].detail;
+        this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder);
+        // console.log("markers", markers);
+      });
+      }
     // this.reblip();
   },
 
@@ -64,7 +99,8 @@ const ListTaskContainer = React.createClass({
 
   // map blips fxn
   pointOnMap:function(longitude, latitude, color, taskName, desc, taskIndex){
-    L.mapbox.marker({
+
+    L.mapbox.featureLayer({
       type: 'Feature',
       geometry: {
         type: 'Point',
@@ -81,27 +117,17 @@ const ListTaskContainer = React.createClass({
         'marker-symbol': taskIndex
       }
     }).addTo(Window.map)
+
   },
 
   reblip: function(){
     let markers = [];
-    for(let task in this.state.tasks){
-      ajaxHelpers.geoCode(this.state.tasks[task].location)
-      .then((response)=>{
-        let taskHolder = parseInt(task)+1;
-        let lat = response.data.results[0].geometry.location.lng;
-        let lng = response.data.results[0].geometry.location.lat;
-        let taskName = this.state.tasks[task].taskName;
-        let detail = this.state.tasks[task].detail;
-        markers.push(this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder) );
-        console.log("markers", markers);
-      });
-      }
+
   },
 
   render: function() {
 
-  this.reblip();
+
   const tasksListElement = [];
   const listStyle = {
     border: "1px solid black"
