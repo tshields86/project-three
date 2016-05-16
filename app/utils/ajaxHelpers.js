@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import kk from '../components/keys.js';
+import kk from '../components/keys.js';
 
 const helpers = {
   getTasks: function(){
@@ -19,7 +19,7 @@ const helpers = {
     return axios.put('https://mapado-nyc-backend.herokuapp.com/api/task/', task);
   },
   geoCode: function(address){
-    return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +',+New+York,+NY&key=' + process.env.GOOG);
+    return axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address +',+New+York,+NY&key=' + (process.env.GOOG || kk.goog));
   }
 }
 

@@ -94,7 +94,6 @@ const ListTaskContainer = React.createClass({
         let taskName = this.state.tasks[task].taskName;
         let detail = this.state.tasks[task].detail;
         markers.push(this.pointOnMap(lng, lat, '#0073E5', taskName, detail, taskHolder) );
-        console.log("markers", markers);
       });
       }
   },
