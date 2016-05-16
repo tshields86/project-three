@@ -25,7 +25,7 @@ function AddTask(props) {
               <br/><br/>
             <br/>
             <select name="taskCategory" onChange={props.onAddCategory}>
-              <option selected disabled>Select</option>
+              <option>Select</option>
               <option value="personal">Personal</option>
               <option value="school">School</option>
               <option value="work">Work</option>
